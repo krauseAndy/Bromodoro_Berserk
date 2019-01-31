@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html"
+    "start": "parcel index.html",
+    "build": "parcel build index.html -d docs --public-url ./"
   },
+  "homepage": "https://krauseandy.github.io/bromodoro_berserk",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -18,6 +20,7 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1"
+    "babel-preset-react": "^6.24.1",
+    "cssnano": "^4.1.8"
   }
 }
