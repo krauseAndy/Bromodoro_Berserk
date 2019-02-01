@@ -73,3 +73,7 @@ button {
 button:focus {
   outline: none;
 }
+
+.modal {
+  background-color: #ea0000;
+}

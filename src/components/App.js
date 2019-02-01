@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Timer from "./Timer";
+import Modal from "./Modal";
 
 class App extends React.Component {
   constructor(props) {
@@ -8,9 +9,9 @@ class App extends React.Component {
 
     this.state = {
       start: false,
-      minute: 25,
-      seconde: 0,
-      stockMin: 25
+      minute: 0,
+      seconde: 2,
+      stockMin: 0
     };
 
     this.handleStartClick = this.handleStartClick.bind(this);
@@ -34,12 +35,16 @@ class App extends React.Component {
       this.setState({
         start: false,
         minute: this.state.stockMin,
-        seconde: 0
+        seconde: 2
       });
     }
   }
 
   handleRemoveSecondeClick() {
+    if (this.state.minute === 0 && this.state.seconde === 0) {
+      return;
+    }
+
     if (this.state.seconde === 0) {
       this.state.minute -= 1;
       this.state.seconde = 60;
@@ -79,6 +84,8 @@ class App extends React.Component {
           addclick={this.addMinute}
           removeclick={this.removeMinute}
         />
+
+        {this.state.minute === 0 && this.state.seconde === 0 && <Modal />}
       </div>
     );
   }
