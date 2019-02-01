@@ -9,9 +9,9 @@ class App extends React.Component {
 
     this.state = {
       start: false,
-      minute: 0,
-      seconde: 2,
-      stockMin: 0
+      minute: 25,
+      seconde: 0,
+      stockMin: 25
     };
 
     this.handleStartClick = this.handleStartClick.bind(this);
@@ -35,7 +35,7 @@ class App extends React.Component {
       this.setState({
         start: false,
         minute: this.state.stockMin,
-        seconde: 2
+        seconde: 0
       });
     }
   }

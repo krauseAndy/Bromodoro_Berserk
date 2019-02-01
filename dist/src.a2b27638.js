@@ -24720,9 +24720,9 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
     _this.state = {
       start: false,
-      minute: 0,
-      seconde: 2,
-      stockMin: 0
+      minute: 25,
+      seconde: 0,
+      stockMin: 25
     };
     _this.handleStartClick = _this.handleStartClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleRemoveSecondeClick = _this.handleRemoveSecondeClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
@@ -24745,7 +24745,7 @@ function (_React$Component) {
         this.setState({
           start: false,
           minute: this.state.stockMin,
-          seconde: 2
+          seconde: 0
         });
       }
     }
@@ -24925,7 +24925,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35269" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38923" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
