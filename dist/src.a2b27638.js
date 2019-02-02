@@ -24736,8 +24736,8 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
     _this.state = {
       start: false,
-      minute: 0,
-      seconde: 2,
+      minute: 25,
+      seconde: 0,
       stockMin: 25,
       isOpen: false
     };
@@ -24824,7 +24824,7 @@ function (_React$Component) {
     key: "removeMinute",
     value: function removeMinute() {
       if (!this.state.start) {
-        if (this.state.minute === 0) {
+        if (this.state.minute === 1) {
           return;
         }
 
@@ -24979,7 +24979,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39723" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35475" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

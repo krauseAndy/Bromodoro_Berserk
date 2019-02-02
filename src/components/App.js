@@ -9,8 +9,8 @@ class App extends React.Component {
 
     this.state = {
       start: false,
-      minute: 0,
-      seconde: 2,
+      minute: 25,
+      seconde: 0,
       stockMin: 25,
       isOpen: false
     };
@@ -94,7 +94,7 @@ class App extends React.Component {
   }
   removeMinute() {
     if (!this.state.start) {
-      if (this.state.minute === 0) {
+      if (this.state.minute === 1) {
         return;
       }
       this.setState({
