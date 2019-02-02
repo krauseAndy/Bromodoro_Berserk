@@ -5,14 +5,13 @@ class Modal extends React.Component {
     super(props);
 
     this.state = {
-      minute: 5,
-      seconde: 0,
-      start: false
+      minute: 0,
+      seconde: 2,
+      isOpen: false
     };
     this.handleStartCount = this.handleStartCount.bind(this);
     this.handleRemoveSeconde = this.handleRemoveSeconde.bind(this);
   }
-
   componentDidMount() {
     this.handleStartCount();
   }
@@ -30,6 +29,10 @@ class Modal extends React.Component {
   }
 
   handleRemoveSeconde() {
+    if (this.state.seconde === 0 && this.state.minute === 0) {
+      return;
+    }
+
     if (this.state.seconde === 0) {
       this.state.minute -= 1;
       this.state.seconde = 60;
@@ -43,9 +46,22 @@ class Modal extends React.Component {
   render() {
     return (
       <div className="modal">
-        <p>"QUOTE"</p>
-        <p>
-          {this.state.minute}:{this.state.seconde}
+        <p className="styleQuotes">
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo"
+        </p>
+        <span>
+          {this.state.minute < 10 ? "0" + this.state.minute : this.state.minute}
+          :
+          {this.state.seconde < 10
+            ? "0" + this.state.seconde
+            : this.state.seconde}
+        </span>
+        <p className="modalButton">
+          <button>Fermer</button>
+          <button>Restart</button>
         </p>
       </div>
     );

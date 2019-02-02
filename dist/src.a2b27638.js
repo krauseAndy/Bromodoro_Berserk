@@ -24503,7 +24503,7 @@ var Header = function Header() {
     className: "image is-128x128"
   }, _react.default.createElement("img", {
     src: require("../img/marque_logo.png"),
-    alt: "MABITE"
+    alt: "logo_marque"
   })));
 };
 
@@ -24622,9 +24622,9 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Modal).call(this, props));
     _this.state = {
-      minute: 5,
-      seconde: 0,
-      start: false
+      minute: 0,
+      seconde: 2,
+      isOpen: false
     };
     _this.handleStartCount = _this.handleStartCount.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleRemoveSeconde = _this.handleRemoveSeconde.bind(_assertThisInitialized(_assertThisInitialized(_this)));
@@ -24648,6 +24648,10 @@ function (_React$Component) {
   }, {
     key: "handleRemoveSeconde",
     value: function handleRemoveSeconde() {
+      if (this.state.seconde === 0 && this.state.minute === 0) {
+        return;
+      }
+
       if (this.state.seconde === 0) {
         this.state.minute -= 1;
         this.state.seconde = 60;
@@ -24662,7 +24666,11 @@ function (_React$Component) {
     value: function render() {
       return _react.default.createElement("div", {
         className: "modal"
-      }, _react.default.createElement("p", null, "\"QUOTE\""), _react.default.createElement("p", null, this.state.minute, ":", this.state.seconde));
+      }, _react.default.createElement("p", {
+        className: "styleQuotes"
+      }, "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\""), _react.default.createElement("span", null, this.state.minute < 10 ? "0" + this.state.minute : this.state.minute, ":", this.state.seconde < 10 ? "0" + this.state.seconde : this.state.seconde), _react.default.createElement("p", {
+        className: "modalButton"
+      }, _react.default.createElement("button", null, "Fermer"), _react.default.createElement("button", null, "Restart")));
     }
   }]);
 
@@ -24720,7 +24728,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
     _this.state = {
       start: false,
-      minute: 25,
+      minute: 0,
       seconde: 0,
       stockMin: 25
     };
@@ -24734,6 +24742,13 @@ function (_React$Component) {
   _createClass(App, [{
     key: "handleStartClick",
     value: function handleStartClick() {
+      if (this.state.minute === 0 && this.state.seconde === 0) {
+        this.setState({
+          minute: 5,
+          seconde: 0
+        });
+      }
+
       if (this.state.start === false) {
         this.setState({
           start: true
@@ -24801,7 +24816,7 @@ function (_React$Component) {
         value: this.state,
         addclick: this.addMinute,
         removeclick: this.removeMinute
-      }), this.state.minute === 0 && this.state.seconde === 0 && _react.default.createElement(_Modal.default, null));
+      }));
     }
   }]);
 
@@ -24925,7 +24940,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38923" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36091" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

@@ -9,7 +9,7 @@ class App extends React.Component {
 
     this.state = {
       start: false,
-      minute: 25,
+      minute: 0,
       seconde: 0,
       stockMin: 25
     };
@@ -21,6 +21,12 @@ class App extends React.Component {
   }
 
   handleStartClick() {
+    if (this.state.minute === 0 && this.state.seconde === 0) {
+      this.setState({
+        minute: 5,
+        seconde: 0
+      });
+    }
     if (this.state.start === false) {
       this.setState(
         {
@@ -54,6 +60,7 @@ class App extends React.Component {
       seconde: (this.state.seconde -= 1)
     });
   }
+
   addMinute() {
     if (!this.state.start) {
       if (this.state.minute === 60) {
@@ -84,8 +91,6 @@ class App extends React.Component {
           addclick={this.addMinute}
           removeclick={this.removeMinute}
         />
-
-        {this.state.minute === 0 && this.state.seconde === 0 && <Modal />}
       </div>
     );
   }
