@@ -49,8 +49,10 @@ class Modal extends React.Component {
     }
 
     if (this.state.seconde === 0) {
-      this.state.minute -= 1;
-      this.state.seconde = 60;
+      this.setState({
+        minute: (this.state.minute -= 1),
+        seconde: (this.state.seconde = 60)
+      });
     }
 
     this.setState({

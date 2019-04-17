@@ -12,7 +12,8 @@ class App extends React.Component {
       minute: 25,
       seconde: 0,
       stockMin: 25,
-      isOpen: false
+      isOpen: false,
+      minuteModif: 25
     };
 
     this.handleStartClick = this.handleStartClick.bind(this);
@@ -35,30 +36,28 @@ class App extends React.Component {
   }
 
   handleRestartPomodoro() {
-    this.setState({
+    this.setState(state => ({
       isOpen: false,
-      minute: this.state.stockMin,
+      minute: state.minuteModif,
       seconde: 0
-    });
+    }));
   }
 
   handleStartClick() {
     if (this.state.start === false) {
-      this.setState(
-        {
-          start: true
-        },
-        function() {
-          this.timerSeconde = setInterval(this.handleRemoveSecondeClick, 1000);
-        }
-      );
+      this.setState(state => ({
+        start: true,
+        minuteModif: state.minute
+      }));
+
+      this.timerSeconde = setInterval(this.handleRemoveSecondeClick, 1000);
     } else {
       clearInterval(this.timerSeconde);
-      this.setState({
+      this.setState(state => ({
         start: false,
-        minute: this.state.stockMin,
+        minute: state.minuteModif,
         seconde: 0
-      });
+      }));
     }
   }
 

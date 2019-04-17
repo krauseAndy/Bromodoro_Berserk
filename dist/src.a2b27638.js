@@ -24657,8 +24657,10 @@ function (_React$Component) {
       }
 
       if (this.state.seconde === 0) {
-        this.state.minute -= 1;
-        this.state.seconde = 60;
+        this.setState({
+          minute: this.state.minute -= 1,
+          seconde: this.state.seconde = 60
+        });
       }
 
       this.setState({
@@ -24739,7 +24741,8 @@ function (_React$Component) {
       minute: 25,
       seconde: 0,
       stockMin: 25,
-      isOpen: false
+      isOpen: false,
+      minuteModif: 25
     };
     _this.handleStartClick = _this.handleStartClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleRemoveSecondeClick = _this.handleRemoveSecondeClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
@@ -24765,27 +24768,33 @@ function (_React$Component) {
   }, {
     key: "handleRestartPomodoro",
     value: function handleRestartPomodoro() {
-      this.setState({
-        isOpen: false,
-        minute: this.state.stockMin,
-        seconde: 0
+      this.setState(function (state) {
+        return {
+          isOpen: false,
+          minute: state.minuteModif,
+          seconde: 0
+        };
       });
     }
   }, {
     key: "handleStartClick",
     value: function handleStartClick() {
       if (this.state.start === false) {
-        this.setState({
-          start: true
-        }, function () {
-          this.timerSeconde = setInterval(this.handleRemoveSecondeClick, 1000);
+        this.setState(function (state) {
+          return {
+            start: true,
+            minuteModif: state.minute
+          };
         });
+        this.timerSeconde = setInterval(this.handleRemoveSecondeClick, 1000);
       } else {
         clearInterval(this.timerSeconde);
-        this.setState({
-          start: false,
-          minute: this.state.stockMin,
-          seconde: 0
+        this.setState(function (state) {
+          return {
+            start: false,
+            minute: state.minuteModif,
+            seconde: 0
+          };
         });
       }
     }
@@ -24979,7 +24988,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35475" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37273" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
